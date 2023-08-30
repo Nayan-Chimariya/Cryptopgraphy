@@ -1,0 +1,4 @@
+Outputs/
+*.exe
+*.o
+*test.cpp
