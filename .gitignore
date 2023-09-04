@@ -1,4 +1,4 @@
 Outputs/
 *.exe
 *.o
-*test.cpp
+*test*.cpp
