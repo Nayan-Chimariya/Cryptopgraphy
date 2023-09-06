@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <ctype.h>
 
-int counter = 0;
 using namespace std;
 
 bool increment = true;
@@ -14,7 +13,7 @@ void printfence(string A[5][25],int row,int column)
     {
         for(j=0;j<column;j++)
         {
-            cout<<A[i][j] <<"  ";
+            cout<<A[i][j] <<"       ";
         }
         cout<<"\n";
     }
@@ -36,7 +35,6 @@ string segments(string plain_text, int key, int turn)
         {
             while(x<row)
             {
-                counter++;
                 if(x==turn)
                 {
                     cypher_text+=plain_text[index];
@@ -91,18 +89,13 @@ int main()
 
     cout<<"\nRail-fence\n-------------------------------------\n";
 
-    /*for(turn=0;turn<key;turn++)
-        cypher_segments+=segments(plain_text,key,turn);*/
-
     for(i=0; i<cypher_segments.length(); i++)
     {
-        counter++;
         if(isalpha(cypher_segments[i]))
             cypher_text+=cypher_segments[i];
     }
 
     cout <<"\nCypher Text: " << cypher_text <<"\n";
-    cout<<"\n" <<counter;
 
     return 0;
 }
