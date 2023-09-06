@@ -4,6 +4,11 @@
 using namespace std;
 bool increment = true;
 
+void swaraj()
+{
+    cout<<"Hello";
+}
+
 void printfence(string A[5][25],int row,int column)
 {
     int i,j;
