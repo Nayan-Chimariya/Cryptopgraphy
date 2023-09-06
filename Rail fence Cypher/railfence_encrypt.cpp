@@ -6,23 +6,17 @@ using namespace std;
 
 bool increment = true;
 
-void swaraj()
-{
-    cout<<"Hello";
-}
-
 void printfence(string A[5][25],int row,int column)
 {
     int i,j;
     for(i=0;i<row;i++)
     {
         for(j=0;j<column;j++)
-        {
-            cout<<A[i][j] <<"       ";
-        }
+            cout<<A[i][j] <<"   ";
+
         cout<<"\n";
     }
-    cout<< "-------------------------------------\n";
+    cout<< "----------------------------------------\n";
 }
 string segments(string plain_text, int key, int turn)
 {
@@ -92,7 +86,10 @@ int main()
 
     plain_text.erase(remove(plain_text.begin(), plain_text.end(), ' '), plain_text.end());
 
-    cout<<"\nRail-fence\n-------------------------------------\n";
+    cout<<"\nRail-fence\n----------------------------------------\n";
+
+    for(turn=0;turn<key;turn++)
+        cypher_segments+=segments(plain_text,key,turn);
 
     for(i=0; i<cypher_segments.length(); i++)
     {
