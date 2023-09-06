@@ -77,6 +77,9 @@ string segments(string plain_text, int key, int turn)
     printfence(rail_fence,row,column);
     return cypher_text;
 }
+int test(){
+    return 0;
+}
 
 int main()
 {
