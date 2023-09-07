@@ -5,11 +5,6 @@
 using namespace std;
 bool increment = true;
 
-void swaraj()
-{
-    cout<<"Hello";
-}
-
 void printfence(string A[5][60],int row,int column)
 {
     int i,j,line_width;
