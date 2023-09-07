@@ -1,26 +1,30 @@
 #include <iostream>
 #include <algorithm>
-#include <ctype.h>
+#include<iomanip>
 
 using namespace std;
-
 bool increment = true;
 
-void printfence(string A[5][25],int row,int column)
+void printfence(string A[5][100],int row,int column)
 {
-    int i,j;
+    int i,j,line_width;
+    string line;
     for(i=0;i<row;i++)
     {
         for(j=0;j<column;j++)
-            cout<<A[i][j] <<"   ";
+            cout<<A[i][j] <<setw(5);
 
         cout<<"\n";
     }
-    cout<< "----------------------------------------\n";
+
+    line_width = column * 5;
+    line = string(line_width, '-');
+    cout <<line<< endl;
+
 }
 string segments(string plain_text, int key, int turn)
 {
-    string rail_fence[5][25],cypher_text;
+    string rail_fence[5][100],cypher_text;
     int index = 0, x=0, y=0;
     int row,column,i,j;
 
@@ -43,14 +47,12 @@ string segments(string plain_text, int key, int turn)
                 y++;
                 index++;
             }
-
             increment = false;
         }
         x-=2;
 
         while(!increment)
         {
-
             while(x>=0)
             {
                 if(x==turn)
@@ -67,7 +69,6 @@ string segments(string plain_text, int key, int turn)
         x+=2;
     }
 
-
     printfence(rail_fence,row,column);
     return cypher_text;
 }
@@ -76,7 +77,8 @@ int main()
 {
     string plain_text,cypher_segments,cypher_text;
     int key, index = 0, x=0, y=0, turn = 0;
-    int row,column, i, j;
+    int row,column, i, j,line_width;
+    string line;
 
     cout<< "Enter message : ";
     getline (cin,plain_text);
@@ -86,7 +88,10 @@ int main()
 
     plain_text.erase(remove(plain_text.begin(), plain_text.end(), ' '), plain_text.end());
 
-    cout<<"\nRail-fence\n----------------------------------------\n";
+    cout<<endl<<"Rail Fence is: "<<endl<<endl;
+    line_width = plain_text.length() * 5;
+    line = string(line_width, '-');
+    cout <<line<< endl;
 
     for(turn=0;turn<key;turn++)
         cypher_segments+=segments(plain_text,key,turn);
@@ -98,6 +103,6 @@ int main()
     }
 
     cout <<"\nCypher Text: " << cypher_text <<"\n";
-
     return 0;
 }
+
