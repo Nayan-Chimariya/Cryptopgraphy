@@ -8,6 +8,7 @@ bool increment = true;
 void printfence(string A[5][60],int row,int column)
 {
     int i,j,line_width;
+    string line;
     for(i=0;i<row;i++)
     {
         for(j=0;j<column;j++)
@@ -18,8 +19,8 @@ void printfence(string A[5][60],int row,int column)
     }
 
     line_width = column * 5;
-    std::string line = std::string(line_width, '-');
-    std::cout <<line<< endl;
+    line = string(line_width, '-');
+    cout <<line<< endl;
 
 }
 string segments(string plain_text, int key, int turn)
@@ -83,6 +84,7 @@ int main()
     string plain_text,cypher_segments,cypher_text;
     int key, index = 0, x=0, y=0, turn = 0;
     int row,column, i, j,line_width;
+    string line;
 
     cout<< "Enter message : ";
     getline (cin,plain_text);
@@ -94,8 +96,8 @@ int main()
 
     cout<<endl<<"Rail Fence is: "<<endl<<endl;
     line_width = plain_text.length() * 5;
-    std::string line = std::string(line_width, '-');
-    std::cout <<line<< endl;
+    line = string(line_width, '-');
+    cout <<line<< endl;
 
     for(turn=0;turn<key;turn++)
         cypher_segments+=segments(plain_text,key,turn);
