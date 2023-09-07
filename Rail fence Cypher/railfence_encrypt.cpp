@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include<iomanip>
 
 using namespace std;
 bool increment = true;
@@ -9,22 +10,26 @@ void swaraj()
     cout<<"Hello";
 }
 
-void printfence(string A[5][25],int row,int column)
+void printfence(string A[5][60],int row,int column)
 {
-    int i,j;
+    int i,j,line_width;
     for(i=0;i<row;i++)
     {
         for(j=0;j<column;j++)
         {
-            cout<<A[i][j] <<"  ";
+            cout<<A[i][j] <<setw(5);
         }
         cout<<"\n";
     }
-    cout<< "-------------------------------------\n";
+
+    line_width = column * 5;
+    std::string line = std::string(line_width, '-');
+    std::cout <<line<< endl;
+
 }
 string segments(string plain_text, int key, int turn)
 {
-    string rail_fence[5][25],cypher_text;
+    string rail_fence[5][60],cypher_text;
     int index = 0, x=0, y=0;
     int row,column,i,j;
 
@@ -80,9 +85,9 @@ string segments(string plain_text, int key, int turn)
 
 int main()
 {
-    string plain_text,cypher_text;
+    string plain_text,cypher_segments,cypher_text;
     int key, index = 0, x=0, y=0, turn = 0;
-    int row,column, i, j;
+    int row,column, i, j,line_width;
 
     cout<< "Enter message : ";
     getline (cin,plain_text);
@@ -92,14 +97,21 @@ int main()
 
     plain_text.erase(remove(plain_text.begin(), plain_text.end(), ' '), plain_text.end());
 
-    cout<<"\nRail-fence\n-------------------------------------\n";
-    for(turn=0;turn<key;turn++)
-        cypher_text+=segments(plain_text,key,turn);
+    cout<<endl<<"Rail Fence is: "<<endl<<endl;
+    line_width = plain_text.length() * 5;
+    std::string line = std::string(line_width, '-');
+    std::cout <<line<< endl;
 
-    cypher_text.erase(remove(cypher_text.begin(), cypher_text.end(), ' '), cypher_text.end());
+    for(turn=0;turn<key;turn++)
+        cypher_segments+=segments(plain_text,key,turn);
+
+    for(i=0; i<cypher_segments.length(); i++)
+    {
+        if(isalpha(cypher_segments[i]))
+            cypher_text+=cypher_segments[i];
+    }
 
     cout <<"\nCypher Text: " << cypher_text <<"\n";
-
     return 0;
 }
 
