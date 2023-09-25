@@ -73,7 +73,7 @@ int main()
     string plain_text, cypher_text, key;
 
     cout<<"Enter message: ";
-    cin>> plain_text;
+    getline(cin,plain_text);
 
     cout<<"Enter key: ";
     cin>> key;
