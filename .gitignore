@@ -2,3 +2,4 @@ Outputs/
 *.exe
 *.o
 *test*.cpp
+*.exec
